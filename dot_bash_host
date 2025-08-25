@@ -1,0 +1,4 @@
+# .bash_host
+echo "Initializing with $HOME/.bash_host"
+alias emacs='flatpak run org.gnu.emacs -nw'
+export EDITOR='flatpak run org.gnu.emacs -nw'

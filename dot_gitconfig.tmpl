@@ -1,0 +1,16 @@
+[user]
+	name = Chad Schellenger
+	email = {{ .email | quote }}
+	signingkey = {{ .signingKey | quote }}
+[commit]
+	gpgsign = true
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cs) %C(bold blue)%an <%ae>%Creset' --abbrev-commit
+	done = "!f() { ob=$(git branch --show-current); if [[ \"$ob\" != \"main\" ]] && [[ \"$ob\" != \"master\" ]]; then git checkout main || git checkout master; git branch -d $ob; git pull; fi; }; f"
+	phead = push -u origin HEAD
+	root = rev-parse --show-toplevel
+	recent = "branch --color=always -r --sort=-committerdate --format='%(HEAD) %(align:35)%(color:yellow)%(refname:short)%(color:reset)%(end) - %(color:red)%(objectname:short)%(color:reset) - %(align:40)%(contents:subject)%(end) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
