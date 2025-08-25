@@ -1,8 +1,10 @@
-echo "initializing with $HOME/.bash_container"
+if [[ $- == *i* ]]; then
+   echo "initializing with $HOME/.bash_container"
+fi
 export GOROOT=/usr/local/go
 if ! [[ "$PATH" =~ ":GOROOT/bin" ]]; then
     PATH="$PATH:$GOROOT/bin"
 fi
 export PATH
 export EDITOR=emacs
-alias stow="stow -t ~ -d ~/dev/dotfiles"
+alias stow="stow -t ~ -d $STOW_DIR"

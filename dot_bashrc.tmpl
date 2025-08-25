@@ -6,6 +6,8 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
+export DEV_DIR={{ .dev_dir | quote }}
+export STOW_DIR="$DEV_DIR/keys"
 export GOPATH="$HOME/go"
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
