@@ -14,3 +14,11 @@
 	ff = only
 [init]
 	defaultBranch = main
+{{- if .cisco }}
+[url "git@www-github.cisco.com:"]
+	insteadOf = https://www-github.cisco.com/
+[url "git@www-github3.cisco.com:"]
+	insteadOf = https://www-github3.cisco.com/
+{{- end }}
+[url "git@github.com:"]
+	insteadOf = https://github.com/

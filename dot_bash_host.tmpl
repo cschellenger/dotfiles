@@ -1,4 +1,8 @@
 # .bash_host
 echo "Initializing with $HOME/.bash_host"
+{{- if eq .chezmoi.os "linux" }}
+    {{- if eq .chezmoi.osRelease.variant "Kinoite" }}
 alias emacs='flatpak run org.gnu.emacs -nw'
 export EDITOR='flatpak run org.gnu.emacs -nw'
+    {{- end}}
+{{- end }}
