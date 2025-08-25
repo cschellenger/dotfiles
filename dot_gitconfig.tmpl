@@ -1,7 +1,12 @@
 [user]
 	name = Chad Schellenger
-	email = {{ .email | quote }}
-	signingkey = {{ .signingKey | quote }}
+{{- if eq .chezmoi.hostname "CHASCHEL-M-JHQX" }}
+	email = chaschel@cisco.com
+	signingkey = 35A61F8B03925118D3323BB1C2FE68CC1ED37A50
+{{ else }}
+	email = chad.schellenger@gmail.com
+	signingkey = 
+{{- end }}
 [commit]
 	gpgsign = true
 [alias]
@@ -14,7 +19,7 @@
 	ff = only
 [init]
 	defaultBranch = main
-{{- if .cisco }}
+{{- if eq .chezmoi.hostname "CHASCHEL-M-JHQX" }}
 [url "git@www-github.cisco.com:"]
 	insteadOf = https://www-github.cisco.com/
 [url "git@www-github3.cisco.com:"]
