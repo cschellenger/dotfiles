@@ -1,6 +1,6 @@
 #!/bin/sh
 
-gpg --list-keys | grep D2C2719E8B34B9299B48F05B4E3163A08012B24C
+gpg --list-keys | grep D2C2719E8B34B9299B48F05B4E3163A08012B24C &> /dev/null
 if [ "$?" -ne "0" ]; then
-    chezmoi age decrypt "{{ .chezmoi.sourceDir }}/D2C2719E8B34B9299B48F05B4E3163A08012B24C.key.age" | gpg --import
+    chezmoi decrypt "{{ .chezmoi.sourceDir }}/encrypted_private_D2C2719E8B34B9299B48F05B4E3163A08012B24C.key.age" | gpg --import
 fi
