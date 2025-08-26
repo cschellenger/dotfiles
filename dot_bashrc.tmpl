@@ -21,6 +21,10 @@ if ! [[ "$PATH" =~ ":$GOPATH/bin" ]]; then
 fi
 export PATH
 
+if [ -f $HOME/.ssh/id_ed25519 ]; then
+    ssh-add -l || ssh-add $HOME/.ssh/id_ed25519
+fi
+
 if [[ "$container" == "" ]]; then
     # on the host system
     source $HOME/.bash_host
@@ -40,3 +44,15 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+
+function sync_push() {
+    pushd $DEV_DIR/sync
+    python sync.py --push
+    popd
+}
+
+function sync_pull() {
+    pushd $DEV_DIR/sync
+    python sync.py --pull
+    popd
+}
