@@ -6,11 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-{{- if eq .chezmoi.hostname "CHASCHEL-M-JHQX" }}
-export DEV_DIR="/opt/dev"
-{{ else }}
-export DEV_DIR="$HOME/dev"
-{{- end }}
+export DEV_DIR={{ .devDir | quote }}
 export STOW_DIR="$DEV_DIR/keys"
 export GOPATH="$HOME/go"
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then

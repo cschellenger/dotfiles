@@ -1,4 +1,12 @@
+{{ $email := promptStringOnce . "email" "Email address" "chad.schellenger@gmail.com" -}}
+{{ $signingKey := promptStringOnce . "signingKey" "GPG signing key" "D2C2719E8B34B9299B48F05B4E3163A08012B24C" -}}
+{{ $devDir := promptStringOnce .  "devDir" "Path to dev dir" "$HOME/dev" -}}
 encryption = "age"
 [age]
     identity = "~/.config/chezmoi/key.txt"
     recipient = "age1s6z6fg98nqu22q9rggy8dyqlfyxsdpgxadq5jt4yfuzhagp82v0qzzhgs3"
+
+[data]
+    email = {{ $email | quote }}
+    devDir = {{ $devDir | quote }}
+    signingKey = {{ $signingKey | quote }}

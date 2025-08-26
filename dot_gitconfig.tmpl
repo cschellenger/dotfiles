@@ -1,12 +1,7 @@
 [user]
 	name = Chad Schellenger
-{{- if eq .chezmoi.hostname "CHASCHEL-M-JHQX" }}
-	email = chaschel@cisco.com
-	signingkey = 35A61F8B03925118D3323BB1C2FE68CC1ED37A50
-{{ else }}
-	email = chad.schellenger@gmail.com
-	signingkey = D2C2719E8B34B9299B48F05B4E3163A08012B24C
-{{- end }}
+	email = {{ .email }}
+	signingkey = {{ .signingKey }}
 [commit]
 	gpgsign = true
 [alias]
