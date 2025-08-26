@@ -21,10 +21,6 @@ if ! [[ "$PATH" =~ ":$GOPATH/bin" ]]; then
 fi
 export PATH
 
-if [ -f $HOME/.ssh/id_ed25519 ]; then
-    ssh-add -l || ssh-add $HOME/.ssh/id_ed25519
-fi
-
 if [[ "$container" == "" ]]; then
     # on the host system
     source $HOME/.bash_host
@@ -57,4 +53,4 @@ function sync_pull() {
     popd
 }
 
-ssh-add -l | grep fedora-infinite-darkport-net || ssh-add ~/.ssh/id_infinite_ed25519
+ssh-add -l | grep fedora-infinite-darkport-net &> /dev/null || ssh-add ~/.ssh/id_infinite_ed25519
