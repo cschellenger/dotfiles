@@ -41,16 +41,12 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-function sync_push() {
-    pushd $DEV_DIR/sync
-    python sync.py --push
-    popd
-}
+alias cz=chezmoi
 
-function sync_pull() {
-    pushd $DEV_DIR/sync
-    python sync.py --pull
-    popd
+function sync_py() {
+    pushd $DEV_DIR/sync &> /dev/null
+    python sync.py $@
+    popd &> /dev/null
 }
 
 ssh-add -l | grep fedora-infinite-darkport-net &> /dev/null || ssh-add ~/.ssh/id_infinite_ed25519
