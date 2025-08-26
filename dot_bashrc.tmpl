@@ -56,3 +56,5 @@ function sync_pull() {
     python sync.py --pull
     popd
 }
+
+ssh-add -l | grep fedora-infinite-darkport-net || ssh-add ~/.ssh/id_infinite_ed25519
