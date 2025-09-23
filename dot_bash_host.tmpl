@@ -6,8 +6,9 @@ fi
     {{- if (and (hasKey .chezmoi.osRelease "variant") (eq .chezmoi.osRelease.variant "Kinoite")) }}
 alias emacs='flatpak run org.gnu.emacs -nw'
 export EDITOR='flatpak run org.gnu.emacs -nw'
-    {{- end}}
-{{- end }}
 alias go="toolbox run -c dev go"
 alias stow="toolbox run -c dev stow -t ~ -d $STOW_DIR"
 alias age="toolbox run -c dev age"
+    {{- end}}
+{{- end }}
+
