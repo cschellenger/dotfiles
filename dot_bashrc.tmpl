@@ -6,6 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
+export PS1='\u@\h:\W \$ '
 export EDITOR=emacs
 export GPG_TTY=$(tty)
 export DEV_DIR={{ .devDir | quote }}
