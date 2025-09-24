@@ -44,7 +44,7 @@ alias cz=chezmoi
 
 function sync_py() {
     pushd $DEV_DIR/sync &> /dev/null
-    python sync.py $@
+    uv run sync.py $@
     popd &> /dev/null
 }
 
