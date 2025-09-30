@@ -20,6 +20,19 @@ if ! [[ "$PATH" =~ ":$GOPATH/bin" ]]; then
 fi
 export PATH
 
+{{- if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian")) }}
+if [ -f .ssh/agent.tmp ]; then
+  source .ssh/agent.tmp
+fi
+if ps -p $SSH_AGENT_PID &> /dev/null; then
+  echo "SSH agent already running with pid $SSH_AGENT_PID"
+else
+  echo "Starting new SSH agent"
+  ssh-agent -s > .ssh/agent.tmp
+  source .ssh/agent.tmp
+fi
+{{- end }}
+
 if [[ "$container" == "" ]]; then
     # on the host system
     source $HOME/.bash_host
