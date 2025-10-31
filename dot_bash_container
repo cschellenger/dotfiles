@@ -7,4 +7,4 @@ if ! [[ "$PATH" =~ ":GOROOT/bin" ]]; then
 fi
 export PATH
 export EDITOR=emacs
-alias stow="stow -t ~ -d $STOW_DIR"
+

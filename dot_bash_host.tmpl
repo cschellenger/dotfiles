@@ -6,9 +6,6 @@ fi
     {{- if (and (hasKey .chezmoi.osRelease "variant") (eq .chezmoi.osRelease.variant "Kinoite")) }}
 alias emacs='flatpak run org.gnu.emacs -nw'
 export EDITOR='flatpak run org.gnu.emacs -nw'
-alias go="toolbox run -c dev go"
-alias stow="toolbox run -c dev stow -t ~ -d $STOW_DIR"
-alias age="toolbox run -c dev age"
 alias lights_off='sudo ~/.local/bin/fury-renegade-rgb -b /dev/i2c-0 -1 -3 brightness --value 0'
     {{- end}}
 {{- end }}
