@@ -10,7 +10,10 @@ export PS1='\u@\h:\W \$ '
 export EDITOR=emacs
 export GPG_TTY=$(tty)
 export DEV_DIR={{ .devDir | quote }}
-export STOW_DIR="$DEV_DIR/keys"
+export CARGO_PATH="$HOME/.cargo"
+if ! [[ $PATH =~ "$CARGO_PATH/bin" ]]; then
+   PATH="$PATH:$CARGO_PATH/bin"
+fi
 export GOPATH="$HOME/go"
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
