@@ -23,7 +23,7 @@ if ! [[ "$PATH" =~ ":$GOPATH/bin" ]]; then
 fi
 export PATH
 
-if [[ -n "$SSH_TTY"]] && [[ $- == *i* ]]; then
+if [[ -n "$SSH_TTY" ]] && [[ $- == *i* ]]; then
    if [ -f .ssh/agent.tmp ]; then
       source .ssh/agent.tmp
    fi
