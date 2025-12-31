@@ -23,8 +23,7 @@ if ! [[ "$PATH" =~ ":$GOPATH/bin" ]]; then
 fi
 export PATH
 
-{{- if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian")) }}
-if [[ $- == *i* ]]; then
+if [[ -n "$SSH_TTY"]] && [[ $- == *i* ]]; then
    if [ -f .ssh/agent.tmp ]; then
       source .ssh/agent.tmp
    fi
@@ -33,7 +32,6 @@ if [[ $- == *i* ]]; then
       source .ssh/agent.tmp
    fi
 fi
-{{- end }}
 
 if [[ "$container" == "" ]]; then
     # on the host system
