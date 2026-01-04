@@ -5,6 +5,11 @@ export GOROOT=/usr/local/go
 if ! [[ "$PATH" =~ ":GOROOT/bin" ]]; then
     PATH="$PATH:$GOROOT/bin"
 fi
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export PATH
 export EDITOR=emacs
 export PS1='(\u@\h:\W) \$ '
