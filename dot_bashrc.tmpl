@@ -10,10 +10,6 @@ export PS1='\u@\h:\W \$ '
 export EDITOR=emacs
 export GPG_TTY=$(tty)
 export DEV_DIR={{ .devDir | quote }}
-export CARGO_PATH="$HOME/.cargo"
-if ! [[ $PATH =~ "$CARGO_PATH/bin" ]]; then
-   PATH="$PATH:$CARGO_PATH/bin"
-fi
 export GOPATH="$HOME/go"
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
@@ -64,4 +60,7 @@ function sync_py() {
 
 if [[ $- == *i* ]]; then
    ssh-add -l | grep fedora-infinite-darkport-net &> /dev/null || ssh-add ~/.ssh/id_infinite_ed25519
+fi
+if [ -f "$HOME/.cargo/env" ]; then
+   . "$HOME/.cargo/env"
 fi
