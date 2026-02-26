@@ -21,9 +21,11 @@ export PATH
 
 if [[ -n "$SSH_TTY" ]] && [[ $- == *i* ]]; then
    if [ -f .ssh/agent.tmp ]; then
+      echo "Checking for running agent"
       source .ssh/agent.tmp
    fi
    if ! ps -p $SSH_AGENT_PID &> /dev/null; then
+      echo "Agent not running, starting new process"
       ssh-agent -s > .ssh/agent.tmp
       source .ssh/agent.tmp
    fi
