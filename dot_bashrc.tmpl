@@ -11,11 +11,15 @@ export EDITOR=emacs
 export GPG_TTY=$(tty)
 export DEV_DIR={{ .devDir | quote }}
 export GOPATH="$HOME/go"
+export CARGO_HOME="$HOME/.cargo"
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 if ! [[ "$PATH" =~ ":$GOPATH/bin" ]]; then
     PATH="$PATH:$GOPATH/bin"
+fi
+if ! [[ "$PATH" =~ ":$CARGO_HOME/bin" ]]; then
+    PATH="$PATH:$CARGO_HOME/bin"
 fi
 export PATH
 
