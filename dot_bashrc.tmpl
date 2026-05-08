@@ -23,16 +23,12 @@ if ! [[ "$PATH" =~ ":$CARGO_HOME/bin" ]]; then
 fi
 export PATH
 
-if [[ -n "$SSH_TTY" ]] && [[ $- == *i* ]]; then
-   if [ -f .ssh/agent.tmp ]; then
-      echo "Checking for running agent"
-      source .ssh/agent.tmp
-   fi
-   if ! ps -p $SSH_AGENT_PID &> /dev/null; then
-      echo "Agent not running, starting new process"
-      ssh-agent -s > .ssh/agent.tmp
-      source .ssh/agent.tmp
-   fi
+# Arch SSH agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [ ! -f "$SSH_AUTH_SOCK" ]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
 if [[ "$container" == "" ]]; then
