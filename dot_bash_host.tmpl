@@ -3,8 +3,6 @@ if [[ $- == *i* ]]; then
    echo "Initializing with $HOME/.bash_host"
 fi
 {{- if eq .chezmoi.os "linux" }}
-alias emacs='emacs -nw'
-export EDITOR='emacs -nw'
     {{- if (and (hasKey .chezmoi.osRelease "variant") (or (eq .chezmoi.osRelease.variant "Kinoite") (eq .chezmoi.osRelease.variant "COSMIC Atomic"))) }}
 alias emacs='flatpak run org.gnu.emacs -nw'
 export EDITOR='flatpak run org.gnu.emacs -nw'

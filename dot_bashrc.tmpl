@@ -7,7 +7,7 @@ fi
 
 # User specific environment
 export PS1='\u@\h:\W \$ '
-export EDITOR=emacs
+export EDITOR='emacs -nw'
 export GPG_TTY=$(tty)
 export DEV_DIR={{ .devDir | quote }}
 export GOPATH="$HOME/go"
@@ -52,6 +52,7 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+alias emacs='emacs -nw'
 alias cz=chezmoi
 alias rmtilde='rm *~'
 
