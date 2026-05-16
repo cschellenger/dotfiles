@@ -11,6 +11,17 @@ export EDITOR='emacs -nw'
 export GPG_TTY=$(tty)
 export DEV_DIR={{ .devDir | quote }}
 export GOPATH="$HOME/go"
+export GOROOT=/usr/local/go
+if [[ -d "$GOROOT" ]]; then
+   if ! [[ "$PATH" =~ ":$GOROOT/bin" ]]; then
+      PATH="$PATH:$GOROOT/bin"
+   fi
+fi
+if [[ -d "$HOME/.opencode/bin" ]]; then
+   if ! [[ "$PATH" =~ ":$HOME/.opencode/bin" ]]; then
+      PATH="$PATH:$HOME/.opencode/bin"
+   fi
+fi
 export CARGO_HOME="$HOME/.cargo"
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
