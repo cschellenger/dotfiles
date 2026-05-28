@@ -11,8 +11,8 @@ export EDITOR='emacs -nw'
 export GPG_TTY=$(tty)
 export DEV_DIR={{ .devDir | quote }}
 export GOPATH="$HOME/go"
-export GOROOT=/usr/local/go
-if [[ -d "$GOROOT" ]]; then
+if [[ -d /usr/local/go ]]; then
+   export GOROOT=/usr/local/go
    if ! [[ "$PATH" =~ ":$GOROOT/bin" ]]; then
       PATH="$PATH:$GOROOT/bin"
    fi
