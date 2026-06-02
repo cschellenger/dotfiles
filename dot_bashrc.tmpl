@@ -66,6 +66,7 @@ unset rc
 alias emacs='emacs -nw'
 alias cz=chezmoi
 alias rmtilde='rm *~'
+alias lights_off='fury-renegade-rgb -b /dev/i2c-5 -1 -3 brightness --value 0'
 
 function sync_py() {
     pushd $DEV_DIR/sync &> /dev/null
